@@ -72,26 +72,28 @@ This application has been constructed as a group project for CSC505 - Advanced T
         style="" data-header="header_0">
             <div class="container" style="width: 100%; height: 100%;" data-appbuilder-object="container">
                 <div class="text_item" data-appbuilder-object="text" style="">
-                    <h1>
-Welcome to Fitness Health
-</h1>
+                    <link type="text/css" rel="stylesheet" href="stylesheet.css">
+                    <h1>Fitness Health </h1>
                 </div>
                 <img class="ui-sortable-placeholder" src="images/fitnesshealth.png" style="visibility: hidden; height: 50px; width: 50px;">
-                <div class="input_element form_element" style="width: 100%; overflow: hidden;"
+                <img src="images/fitnesshealth.png" style="width: 80px; height: 170px; z-index: 1000; left: 5px; top: 0px; right: 5px;"
+                alt="Title" data-appbuilder-object="image" class="" title="logo">
+                <img src="images/backgroundrun.jpg" style="width: 300px; height: 400px; opacity: 0.5; top: 0px; left: 0px; bottom: 0px; right: 0px; position: absolute; z-index: -1;"
+                alt="Title" data-appbuilder-object="image" class="" title="background">
+                <div class="input_element form_element" style="width: 100%; overflow: hidden; font-family: Arial; font-size: 15px;"
                 data-appbuilder-object="input">
                     <label for="userid">Username</label>
                     <input type="text" style="float:left;" id="userid" placeholder="">
                 </div>
                 <div class="input_element form_element" style="width:100%;overflow:hidden" data-appbuilder-object="input">
-                    <label for="password">Password</label>
-                    <input type="text" style="float:left;" id="password" placeholder="">
+                    <label for="userid">Login</label>
+                    <input type="text" style="float:left;" id="userid" placeholder="">
                 </div><a class="button" href="#" style="position: relative; z-index: 2;"
                 data-appbuilder-object="button" data-transition="slide" id="login">Login</a>
-                <a class="button" href="#" style="position: relative; z-index: 2;" data-appbuilder-object="button"
-                data-transition="slide" id="register">Register</a>
-                <img src="images/fitnesshealth.png" style="width: 50px; height: 50px; position: relative; z-index: 1000; left: 0px; top: 0px;"
-                alt="Title" data-appbuilder-object="image" class="ui-sortable-helper"
-                title="">
+                <a class="button" href="#" style="z-index: 5; position: relative; left: 0px; top: 0px; right: auto;"
+                data-appbuilder-object="button" data-transition="slide" id="register">Register</a>
+
+
             </div>
         </div>
         <div class="panel" title="Validation Screen" data-nav="nav_0" id="validate" data-appbuilder-object="page"

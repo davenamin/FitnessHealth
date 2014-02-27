@@ -71,11 +71,27 @@ This application has been constructed as a group project for CSC505 - Advanced T
         <div class="panel" title="Main Screen" data-nav="nav_0" id="main" data-appbuilder-object="page"
         style="" data-header="header_0">
             <div class="container" style="width: 100%; height: 100%;" data-appbuilder-object="container">
-                <div class="text_item" data-appbuilder-object="text">
+                <div class="text_item" data-appbuilder-object="text" style="">
                     <h1>
-STUFF NEEDS TO GO HERE!
+Welcome to Fitness Health
 </h1>
                 </div>
+                <img class="ui-sortable-placeholder" src="images/fitnesshealth.png" style="visibility: hidden; height: 50px; width: 50px;">
+                <div class="input_element form_element" style="width: 100%; overflow: hidden;"
+                data-appbuilder-object="input">
+                    <label for="userid">Username</label>
+                    <input type="text" style="float:left;" id="userid" placeholder="">
+                </div>
+                <div class="input_element form_element" style="width:100%;overflow:hidden" data-appbuilder-object="input">
+                    <label for="password">Password</label>
+                    <input type="text" style="float:left;" id="password" placeholder="">
+                </div><a class="button" href="#" style="position: relative; z-index: 2;"
+                data-appbuilder-object="button" data-transition="slide" id="login">Login</a>
+                <a class="button" href="#" style="position: relative; z-index: 2;" data-appbuilder-object="button"
+                data-transition="slide" id="register">Register</a>
+                <img src="images/fitnesshealth.png" style="width: 50px; height: 50px; position: relative; z-index: 1000; left: 0px; top: 0px;"
+                alt="Title" data-appbuilder-object="image" class="ui-sortable-helper"
+                title="">
             </div>
         </div>
         <div class="panel" title="Validation Screen" data-nav="nav_0" id="validate" data-appbuilder-object="page"

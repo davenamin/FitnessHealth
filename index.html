@@ -71,7 +71,7 @@ This application has been constructed as a group project for CSC505 - Advanced T
         <div class="panel" title="Main Screen" data-nav="nav_0" id="main" data-appbuilder-object="page"
         style="" data-header="header_0">
             <div class="container" style="width: 100%; height: 100%;" data-appbuilder-object="container">
-                <div class="text_item" data-appbuilder-object="text" style="">
+                <div class="text_item" data-appbuilder-object="text" style="font-family: Copperplate, 'Copperplate Gothic Light', fantasy;">
                     <link type="text/css" rel="stylesheet" href="stylesheet.css">
                     <h1>Fitness Health </h1>
                 </div>
@@ -80,33 +80,138 @@ This application has been constructed as a group project for CSC505 - Advanced T
                 alt="Title" data-appbuilder-object="image" class="" title="logo">
                 <img src="images/backgroundrun.jpg" style="width: 300px; height: 400px; opacity: 0.5; top: 0px; left: 0px; bottom: 0px; right: 0px; position: absolute; z-index: -1;"
                 alt="Title" data-appbuilder-object="image" class="" title="background">
-                <div class="input_element form_element" style="width: 100%; overflow: hidden; font-family: Arial; font-size: 15px;"
+                <a class="button ui-sortable-placeholder" style="visibility: hidden; height: 35px; width: 83px;"
+                data-appbuilder-object="button"></a>
+                <div class="input_element form_element" style="width: 100%; overflow: hidden; font-family: Copperplate, CopperplateGothicLight, fantasy; font-size: large;"
                 data-appbuilder-object="input">
                     <label for="userid">Username</label>
                     <input type="text" style="float:left;" id="userid" placeholder="">
                 </div>
-                <div class="input_element form_element" style="width:100%;overflow:hidden" data-appbuilder-object="input">
+                <div class="input_element form_element" style="width: 100%; overflow: hidden; font-family: Copperplate, CopperplateGothicLight, fantasy;"
+                data-appbuilder-object="input">
                     <label for="userid">Login</label>
                     <input type="text" style="float:left;" id="userid" placeholder="">
-                </div><a class="button" href="#" style="position: relative; z-index: 2;"
+                </div><a class="button" href="#" style="position: relative; z-index: 2; background-color: rgb(28, 184, 65); font-family: Copperplate, 'Copperplate Gothic Light', fantasy;"
                 data-appbuilder-object="button" data-transition="slide" id="login">Login</a>
-                <a class="button" href="#" style="z-index: 5; position: relative; left: 0px; top: 0px; right: auto;"
+
+
+
+                <a class="button ui-sortable-helper" href="validate" style="z-index: 1000; background-color: rgb(28, 184, 65); position: relative; left: 0px; top: 0px; right: auto; font-family: Copperplate, CopperplateGothicLight, fantasy;"
                 data-appbuilder-object="button" data-transition="slide" id="register">Register</a>
-
-
             </div>
         </div>
         <div class="panel" title="Validation Screen" data-nav="nav_0" id="validate" data-appbuilder-object="page"
         style="" data-header="header_0">
-            <div class="container" style="width: 100%; height: 100%;" data-appbuilder-object="container">
+            <div class="container" style="width: 100%; height: 200%;" data-appbuilder-object="container">
                 <div class="text_item" data-appbuilder-object="text">
-                    <h1> OTHER STUFF NEEDS TO GO HERE </h1>
+                    <h3><center> User Information
+</center></h3>
+
                 </div>
+                <div class="select_element form_element" style="width: 90%;" data-appbuilder-object="select">
+                    <label for="userid">User ID</label>
+                    <select id="userid"></select>
+                </div>
+                <div class="select_element form_element" style="width: 90%; overflow: hidden;"
+                data-appbuilder-object="select">
+                    <label for="type">User Type</label>
+                    <select id="type">
+
+
+                        <option value="Trainer" selected="">Trainer</option>
+                        <option value="User">User</option>
+                    </select>
+                </div>
+                <div class="input_element form_element" style="width: 90%; overflow: hidden;" data-appbuilder-object="input">
+                    <label for="password">Password</label>
+                    <input type="password" style="float:left;" id="password" placeholder="Password">
+                </div>
+                <div class="select_element form_element" style="width: 90%; overflow: hidden;"
+                data-appbuilder-object="select">
+                    <label for="trainer">Trainer</label>
+                    <select id="trainer">
+
+                        <option value="trainer" selected="">Select Trainer name</option>
+                    </select>
+                </div>
+                <div class="select_element form_element" style="width: 90%; overflow: hidden;"
+                data-appbuilder-object="select">
+                    <label for="dob">DOB</label>
+                    <select id="dob">
+                        <option value="Dob" selected="">Enter Dob</option>
+                    </select>
+                </div>
+                <div class="input_element form_element" style="width: 90%;" data-appbuilder-object="input">
+                    <label for="email">Email</label>
+                    <input type="email" style="float:left;" id="email" placeholder="Enter Email ID">
+                </div>
+                <div class="textarea_element form_element" style="width: 90%;" data-appbuilder-object="textarea">
+                    <label for="height">Height</label>
+                    <textarea id="height"></textarea>
+                </div>
+                <div class="textarea_element form_element" style="width: 90%;" data-appbuilder-object="textarea">
+                    <label for="weight">Weight</label>
+                    <textarea id="weight"></textarea>
+                </div>
+                <div class="textarea_element form_element" style="width: 90%;" data-appbuilder-object="textarea">
+                    <label for="address">Address</label>
+                    <textarea id="address"></textarea>
+                </div>
+
+                <a class="button" href="#" style="background-color: rgb(28, 184, 65); position: relative; left: 130px;"
+                data-appbuilder-object="button" data-transition="slide" id="button">Submit</a>
+
             </div>
+        </div>
+
+        <div class="panel" title="Work Out" data-nav="nav_0" id="workout" data-appbuilder-object="page"
+        style="">
+            <div class="text_item" data-appbuilder-object="text" style="">Enter Work out Details</div>
+            <div class="select_element form_element"
+            style="width:100%;overflow:hidden" data-appbuilder-object="select">
+                <label for="date">Select date</label>
+                <select id="date">
+                    <option value="date" selected="">select date</option>
+                </select>
+            </div>
+            <div class="input_element form_element" style="width: 100%; overflow: hidden;"
+            data-appbuilder-object="input">
+                <label for="start time">Start Time</label>
+                <input type="text" style="float:left;" id="start time"
+                placeholder="Enter Start time">
+            </div>
+            <div class="input_element form_element" style="width:100%;overflow:hidden"
+            data-appbuilder-object="input">
+                <label for="endTime">End Time</label>
+                <input type="text" style="float:left;" id="endTime"
+                placeholder="Enter end time">
+            </div>
+            <div class="select_element form_element" style="width:100%;overflow:hidden"
+            data-appbuilder-object="select">
+                <label for="repetations">Repetations</label>
+                <select id="repetations">
+                    <option value="Select Box" selected="">enter repetations</option>
+                </select>
+            </div>
+            <div class="select_element form_element" style="width:100%;overflow:hidden"
+            data-appbuilder-object="select">
+                <label for="worktime">work time</label>
+                <select id="worktime">
+                    <option value="Select Box" selected="">Select Box</option>
+                </select>
+            </div>
+            <div class="select_element form_element" style="width:100%;overflow:hidden"
+            data-appbuilder-object="select">
+                <label for="distance">distance</label>
+                <select id="distance">
+                    <option value="Select Box" selected="">Select Box</option>
+                </select>
+            </div><a class="button" href="#" style="background-color: rgb(28, 184, 65); position: relative; left: 130px;"
+            data-appbuilder-object="button" data-transition="slide" id="submit">submit</a>
         </div>
     </div>
     <div id="navbar"> <a href="#main" class="icon calendar">Workouts</a><a href="#validate" class="icon check">Validate</a>
-        <a href="#about" class="icon info">About</a>
+        <a href="#about" class="icon info">About</a><a href="#user_info" class="icon info">User Info</a>
     </div>
     <header id="header_0" data-appbuilder-object="header">
         <h1 class="apptitle">Fitness Health</h1>
@@ -114,6 +219,9 @@ This application has been constructed as a group project for CSC505 - Advanced T
     <nav id="nav_0" data-appbuilder-object="nav">
         <h1>Side Menu</h1>
     </nav>
+    <header id="header_1" data-appbuilder-object="header"> <a id="backButton" href="#" class="button">Back</a>
+        <h1 class="">Custom Title</h1> 
+    </header>
 </div>
 
 

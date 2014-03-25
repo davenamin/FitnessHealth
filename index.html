@@ -1,39 +1,36 @@
 <!DOCTYPE html>
-<html>
-<!--HTML5 doctype-->
+<html><!--HTML5 doctype-->
 
 <head>
-    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta http-equiv="Pragma" content="no-cache">
-    <script type="text/javascript" charset="utf-8" src="intelxdk.js"></script>
-    <script type="text/javascript" charset="utf-8" src="js/fitnesshealth.backend.js"></script>
-
-    <script type="text/javascript" language="javascript">
-        // This event handler is fired once the intel libraries are ready
-            function onDeviceReady() {
-                //hide splash screen now that our app is ready to run
-                intel.xdk.device.hideSplashScreen();
-                setTimeout(function () {
-                    $.ui.launch();
-                }, 50);
-            }
-            //initial event handler to detect when intel is ready to roll
-            document.addEventListener("intel.xdk.device.ready", onDeviceReady, false);
-    </script>
-    <script src="js/appframework.ui.min.js"></script>
-    <script>
-        $.ui.autoLaunch = false;
-            $.ui.useOSThemes = true; //Change this to false to force a device theme
-            $.ui.blockPageScroll();
-            $(document).ready(function () {
-                if ($.ui.useOSThemes && !$.os.ios && $("#afui").get(0).className !== "ios")
-                    $("#afui").removeClass("ios");
-            });
-    </script>
-    <link href="css/icons.css" rel="stylesheet" type="text/css">
-    <link href="css/af.ui.css" rel="stylesheet" type="text/css">
+<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta http-equiv="Pragma" content="no-cache">
+<script type="text/javascript" charset="utf-8" src="intelxdk.js"></script>
+<script type="text/javascript" language="javascript">
+    // This event handler is fired once the intel libraries are ready
+    function onDeviceReady() {
+        //hide splash screen now that our app is ready to run
+        intel.xdk.device.hideSplashScreen();
+        setTimeout(function () {
+            $.ui.launch();
+        }, 50);
+    }
+    //initial event handler to detect when intel is ready to roll
+    document.addEventListener("intel.xdk.device.ready", onDeviceReady, false);
+</script>
+<script src="js/appframework.ui.min.js"></script>
+<script>
+    $.ui.autoLaunch = false;
+    $.ui.useOSThemes = true; //Change this to false to force a device theme
+    $.ui.blockPageScroll();
+    $(document).ready(function () {
+        if ($.ui.useOSThemes && !$.os.ios && $("#afui").get(0).className !== "ios")
+            $("#afui").removeClass("ios");
+    });
+</script>
+<link href="css/icons.css" rel="stylesheet" type="text/css">
+<link href="css/af.ui.css" rel="stylesheet" type="text/css">
 </head>
 
 <div id="afui" class="ios">
@@ -44,80 +41,53 @@
     </div>
     <div id="content" style="">
 
-        <div class="panel" title="About" data-nav="nav_0" id="about" data-appbuilder-object="page" style="" data-header="header_0">
-            <div class="container" style="width:100%" data-appbuilder-object="container">
 
-                <a class="button" href="#JSONREAD" style="" data-appbuilder-object="button" data-transition="slide" id="testbutton" onclick="fh_login()">Query Server</a>
-                <div id="removeme"> REMOVE ME </div>
-                <div class="text_item" data-appbuilder-object="text" >
-                    <ol class="list inset" id="testtext" href="#TESTTEXT"></ol>
-                </div>
-            </div>
-
-            <div class="container" style="width: 100%; height: 100%;" data-appbuilder-object="container">
-                <div class="text_item" data-appbuilder-object="text" style="">
-                    <h1>Fitness Health is an application designed and created by:</h1>
-                    <br>
-
-                    <ul class="list inset" style="" data-appbuilder-object="list">
-                        <li>Omar Rivera</li>
-                        <li>Andrew Poirier</li>
-                        <li>Daven Amin</li>
-                        <li>Rick Rejeleene</li>
-                        <li>[Brian Strattard]</li>
-                    </ul>
-
-                    <br>
-                    <h2>
-                        This application has been constructed as a group project for CSC505 - Advanced Topics in Software Engineering, Spring 2014 Semester at the University of Rhode Island</h2>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                </div>
-            </div>
-        </div>
-        <div class="panel" title="Main Screen" data-nav="nav_0" id="main" data-appbuilder-object="page" style="" data-header="header_0">
+        <div class="panel" title="Main Screen" data-nav="nav_0" id="main" data-appbuilder-object="page"
+        style="" data-header="header_0">
             <div class="container" style="width: 100%; height: 100%;" data-appbuilder-object="container">
                 <div class="text_item" data-appbuilder-object="text" style="font-family: Copperplate, 'Copperplate Gothic Light', fantasy;">
                     <link type="text/css" rel="stylesheet" href="stylesheet.css">
-                    <h1>Fitness Health</h1>
+                    <h1>Fitness Health </h1>
                 </div>
                 <img class="ui-sortable-placeholder" src="images/fitnesshealth.png" style="visibility: hidden; height: 50px; width: 50px;">
-                <img src="images/fitnesshealth.png" style="width: 80px; height: 170px; z-index: 1000; left: 5px; top: 0px; right: 5px;" alt="Title" data-appbuilder-object="image" class="" title="logo">
-                <img src="images/backgroundrun.jpg" style="width: 300px; height: 400px; opacity: 0.5; top: 0px; left: 0px; bottom: 0px; right: 0px; position: absolute; z-index: -1;" alt="Title" data-appbuilder-object="image" class="" title="background">
-                <a class="button ui-sortable-placeholder" style="visibility: hidden; height: 35px; width: 83px;" data-appbuilder-object="button"></a>
-                <div class="input_element form_element" style="width: 100%; overflow: hidden; font-family: Copperplate, CopperplateGothicLight, fantasy; font-size: large;" data-appbuilder-object="input">
+                <img src="images/fitnesshealth.png" style="width: 80px; height: 170px; z-index: 1000; left: 5px; top: 0px; right: 5px;"
+                alt="Title" data-appbuilder-object="image" class="" title="logo">
+                <img src="images/backgroundrun.jpg" style="width: 300px; height: 400px; opacity: 0.5; top: 0px; left: 0px; bottom: 0px; right: 0px; position: absolute; z-index: -1;"
+                alt="Title" data-appbuilder-object="image" class="" title="background">
+                <a class="button ui-sortable-placeholder" style="visibility: hidden; height: 35px; width: 83px;"
+                data-appbuilder-object="button"></a>
+                <div class="input_element form_element" style="width: 100%; overflow: hidden; font-family: Copperplate, CopperplateGothicLight, fantasy; font-size: large;"
+                data-appbuilder-object="input">
                     <label for="userid">Username</label>
                     <input type="text" style="float:left;" id="userid" placeholder="">
                 </div>
-                <div class="input_element form_element" style="width: 100%; overflow: hidden; font-family: Copperplate, CopperplateGothicLight, fantasy;" data-appbuilder-object="input">
+                <div class="input_element form_element" style="width: 100%; overflow: hidden; font-family: Copperplate, CopperplateGothicLight, fantasy;"
+                data-appbuilder-object="input">
                     <label for="userid">Login</label>
                     <input type="text" style="float:left;" id="userid" placeholder="">
-                </div>
-                <a class="button" href="#" style="position: relative; z-index: 2; background-color: rgb(28, 184, 65); font-family: Copperplate, 'Copperplate Gothic Light', fantasy;" data-appbuilder-object="button" data-transition="slide" id="login">Login</a>
+                </div><a class="button" href="#" style="position: relative; z-index: 2; background-color: rgb(28, 184, 65); font-family: Copperplate, 'Copperplate Gothic Light', fantasy;"
+                data-appbuilder-object="button" data-transition="slide" id="login">Login</a>
 
 
 
-                <a class="button ui-sortable-helper" href="validate" style="z-index: 1000; background-color: rgb(28, 184, 65); position: relative; left: 0px; top: 0px; right: auto; font-family: Copperplate, CopperplateGothicLight, fantasy;" data-appbuilder-object="button" data-transition="slide" id="register">Register</a>
+                <a class="button ui-sortable-helper" href="#" style="z-index: 1000; background-color: rgb(28, 184, 65); position: relative; left: 0px; top: 0px; right: auto; font-family: Copperplate, CopperplateGothicLight, fantasy;"
+                data-appbuilder-object="button" data-transition="slide" id="register">Register</a>
             </div>
         </div>
-        <div class="panel" title="Validation Screen" data-nav="nav_0" id="validate" data-appbuilder-object="page" style="" data-header="header_0">
+        <div class="panel" title="User Information" data-nav="nav_0" id="User_info" data-appbuilder-object="page"
+        style="" data-header="header_0">
             <div class="container" style="width: 100%; height: 200%;" data-appbuilder-object="container">
                 <div class="text_item" data-appbuilder-object="text">
-                    <h3>
-                        <center>User Information
-                        </center>
-                    </h3>
+                    <h3><center> User Information
+</center></h3>
 
                 </div>
                 <div class="select_element form_element" style="width: 90%;" data-appbuilder-object="select">
                     <label for="userid">User ID</label>
                     <select id="userid"></select>
                 </div>
-                <div class="select_element form_element" style="width: 90%; overflow: hidden;" data-appbuilder-object="select">
+                <div class="select_element form_element" style="width: 90%; overflow: hidden;"
+                data-appbuilder-object="select">
                     <label for="type">User Type</label>
                     <select id="type">
 
@@ -130,14 +100,16 @@
                     <label for="password">Password</label>
                     <input type="password" style="float:left;" id="password" placeholder="Password">
                 </div>
-                <div class="select_element form_element" style="width: 90%; overflow: hidden;" data-appbuilder-object="select">
+                <div class="select_element form_element" style="width: 90%; overflow: hidden;"
+                data-appbuilder-object="select">
                     <label for="trainer">Trainer</label>
                     <select id="trainer">
 
                         <option value="trainer" selected="">Select Trainer name</option>
                     </select>
                 </div>
-                <div class="select_element form_element" style="width: 90%; overflow: hidden;" data-appbuilder-object="select">
+                <div class="select_element form_element" style="width: 90%; overflow: hidden;"
+                data-appbuilder-object="select">
                     <label for="dob">DOB</label>
                     <select id="dob">
                         <option value="Dob" selected="">Enter Dob</option>
@@ -160,12 +132,14 @@
                     <textarea id="address"></textarea>
                 </div>
 
-                <a class="button" href="#" style="background-color: rgb(28, 184, 65); position: relative; left: 130px;" data-appbuilder-object="button" data-transition="slide" id="button">Submit</a>
+                <a class="button" href="#" style="background-color: rgb(28, 184, 65); position: relative; left: 130px;"
+                data-appbuilder-object="button" data-transition="slide" id="button">Submit</a>
 
             </div>
         </div>
 
-        <div class="panel" title="Work Out" data-nav="nav_0" id="workout" data-appbuilder-object="page" style="">
+        <div class="panel" title="Work Out" data-nav="nav_0" id="workout" data-appbuilder-object="page"
+        style="">
             <div class="text_item" data-appbuilder-object="text" style="">Enter Work out Details</div>
             <div class="select_element form_element" style="width:100%;overflow:hidden" data-appbuilder-object="select">
                 <label for="date">Select date</label>
@@ -173,7 +147,8 @@
                     <option value="date" selected="">select date</option>
                 </select>
             </div>
-            <div class="input_element form_element" style="width: 100%; overflow: hidden;" data-appbuilder-object="input">
+            <div class="input_element form_element" style="width: 100%; overflow: hidden;"
+            data-appbuilder-object="input">
                 <label for="start time">Start Time</label>
                 <input type="text" style="float:left;" id="start time" placeholder="Enter Start time">
             </div>
@@ -198,15 +173,38 @@
                 <select id="distance">
                     <option value="Select Box" selected="">Select Box</option>
                 </select>
+            </div><a class="button" href="#" style="background-color: rgb(28, 184, 65); position: relative; left: 130px;"
+            data-appbuilder-object="button" data-transition="slide" id="submit">submit</a>
+        </div>
+
+        <div class="panel" title="About" data-nav="nav_0" id="about" data-appbuilder-object="page"
+        style="">
+            <div class="text_item" data-appbuilder-object="text">
+                <h1>Fitness Health is an application designed and created by:</h1>
+                <br>
+
+                <ul class="list inset" style="" data-appbuilder-object="list">
+                    <li>Omar Rivera</li>
+                    <li>Andrew Poirier</li>
+                    <li>Daven Amin</li>
+                    <li>Rick Rejeleene</li>
+                    <li>[Brian Strattard]</li>
+                </ul>
+
+                <br>
+                <h2>
+This application has been constructed as a group project for CSC505 - Advanced Topics in Software Engineering, Spring 2014 Semester at the University of Rhode Island</h2>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
             </div>
-            <a class="button" href="#" style="background-color: rgb(28, 184, 65); position: relative; left: 130px;" data-appbuilder-object="button" data-transition="slide" id="submit">submit</a>
         </div>
     </div>
-    <div id="navbar">
-        <a href="#main" class="icon calendar">Workouts</a>
-        <a href="#validate" class="icon check">Validate</a>
-        <a href="#about" class="icon info">About</a>
-        <a href="#user_info" class="icon info">User Info</a>
+    <div id="navbar"> <a href="#workout" class="icon calendar">Workouts</a><a href="#User_info" class="icon check">User INFO</a>
+        <a href="#about" class="icon info">About</a><a href="#main" class="icon database">Login</a>
     </div>
     <header id="header_0" data-appbuilder-object="header">
         <h1 class="apptitle">Fitness Health</h1>
@@ -214,9 +212,8 @@
     <nav id="nav_0" data-appbuilder-object="nav">
         <h1>Side Menu</h1>
     </nav>
-    <header id="header_1" data-appbuilder-object="header">
-        <a id="backButton" href="#" class="button">Back</a>
-        <h1 class="">Custom Title</h1>
+    <header id="header_1" data-appbuilder-object="header"> <a id="backButton" href="#" class="button">Back</a>
+        <h1 class="">Custom Title</h1> 
     </header>
 </div>
 

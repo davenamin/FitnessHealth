@@ -8,6 +8,9 @@ const REGISTER_PAGE = 'http://192.168.1.103/register.php';
 const GET_WORKOUT_PAGE = 'http://192.168.1.103/get_workouts.php';
 const CREATE_WORKOUT_PAGE = 'http://192.168.1.103/create_workout.php';
 const UPDATE_USER_PAGE = 'http://192.168.1.103/update_user.php';
+const GET_USERS_PAGE = 'http://192.168.1.103/get_users.php';
+const ADD_TRAINER_PAGE = 'http://192.168.1.103/add_trainer.php';
+const GET_VALIDATABLE_WORKOUTS_PAGE = 'http://192.168.1.103/get_validatable_workouts.php';
 
 
 
@@ -163,18 +166,70 @@ function updateUserInformation() {
         UPDATE_USER_PAGE,
         sending,
         function (data) {
-            createWorkoutResponse(data);
+            handleUserUpdateResponse(data);
         });
 }
 
+function handleUserUpdateResponse(response) {}
+
+
 // add trainer constants
 const TRAINER = "trainer";
+const TRAINER_HTML = "#trainer";
 
-function addValidatedUser() {}
+function getAllUsers() {
+    var sending = {
+        USERNAME: $(USERNAME_HTML).get(),
+        PASSWORD: $(PASSWORD_HTML).get(),
+        SESSION: sessionid
+    };
 
-function getValidatableWorkouts() {}
+    $.getJSON(
+        GET_USERS_PAGE,
+        sending,
+        function (data) {
+            handleGetUsers(data);
+        });
+}
+
+function addValidatedUser() {
+    var sending = {
+        USERNAME: $(USERNAME_HTML).get(),
+        PASSWORD: $(PASSWORD_HTML).get(),
+        SESSION: sessionid,
+        TRAINER: $(TRAINER_HTML).get()
+    };
+
+    $.getJSON(
+        ADD_TRAINER_PAGE,
+        sending,
+        function (data) {
+            handleAddTrainerResponse(data);
+        });
+}
+
+function handleGetUsers(response) {}
+
+function handleAddTrainerResponse(response) {}
 
 
+
+function getValidatableWorkouts() {
+    var sending = {
+        USERNAME: $(USERNAME_HTML).get(),
+        PASSWORD: $(PASSWORD_HTML).get(),
+        SESSION: sessionid
+    };
+
+    $.getJSON(
+        GET_VALIDATABLE_WORKOUTS_PAGE,
+        sending,
+        function (data) {
+            handleValidatableWorkouts(data);
+        });
+}
+
+function handleValidatableWorkouts(response) {}
 
 
 

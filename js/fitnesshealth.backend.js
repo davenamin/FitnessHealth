@@ -6,7 +6,7 @@
 const WEB_ADDRESS = 'http://192.168.1.103/';
 // php pages
 const LOGIN_PAGE = WEB_ADDRESS + 'redirect.php'; //'login.php';
-const REGISTER_PAGE = WEB_ADDRESS + 'register.php';
+const REGISTER_PAGE = WEB_ADDRESS + 'adduser.php';
 const GET_WORKOUT_PAGE = WEB_ADDRESS + 'get_workouts.php';
 const CREATE_WORKOUT_PAGE = WEB_ADDRESS + 'create_workout.php';
 const UPDATE_USER_PAGE = WEB_ADDRESS + 'update_user.php';
@@ -17,8 +17,8 @@ const GET_VALIDATABLE_WORKOUTS_PAGE = WEB_ADDRESS + 'get_validatable_workouts.ph
 
 
 // global constants
-const USERNAME_HTML = "#username"; // TODO
-const PASSWORD_HTML = "#password"; // TODO
+const USERNAME_HTML = "#username";
+const PASSWORD_HTML = "#password";
 var sessionid;
 
 // login and register constants
@@ -41,23 +41,12 @@ function login() {
 }
 
 
-function register() {
-    if (checkUsernameValid() && checkPasswordValid()) {
-        var sending = {
-            USERNAME: $(USERNAME_HTML).get(),
-            PASSWORD: $(PASSWORD_HTML).get()
-        };
 
-        $.getJSON(
-            REGISTER_PAGE,
-            sending,
-            function (data) {
-                handleLogin(data);
-            });
-    }
-}
 
 function handleLogin(response) {
+    console.log(response);
+
+
     if (response == "Invalid_Data") {
         alert("BAD REQUEST");
     } else if (response == "No_User_Data") {
@@ -66,8 +55,21 @@ function handleLogin(response) {
 
         sessionid = response;
         alert(response.Address);
+        injectUserInformation(sessionid);
     }
+}
+
+function handleRegister(response) {
     console.log(response);
+
+
+    if (response == "User_Exists") {
+        alert("Exists!");
+    } else if (response == "USER_ADDED") {
+        alert("Added!");
+    } else {
+        alert(response);
+    }
 }
 
 function checkUsernameValid() {
@@ -77,6 +79,8 @@ function checkUsernameValid() {
 function checkPasswordValid() {
     return true;
 }
+
+
 
 // get workouts constants
 const CURRENTDATE = "currentdate";
@@ -149,18 +153,56 @@ function createWorkoutResponse(response) {
 function checkWorkoutValid() {}
 
 // update user information constants
-const DOB = "dob";
 const DOB_HTML = "#dob";
-const HEIGHT = "height";
 const HEIGHT_HTML = "#height";
-const WEIGHT = "weight";
 const WEIGHT_HTML = "#weight";
-const EMAIL = "email";
 const EMAIL_HTML = "#email";
-const NAME = "name";
 const NAME_HTML = "#name";
-const ADDRESS = "address";
 const ADDRESS_HTML = "#address";
+const REG_USER_HTML = "#reguser";
+const REG_PASS_HTML = "#regpass";
+
+const REG_DOB_HTML = "#regdob";
+const REG_HEIGHT_HTML = "#regheight";
+const REG_WEIGHT_HTML = "#regweight";
+const REG_EMAIL_HTML = "#regemail";
+const REG_NAME_HTML = "#regname";
+const REG_ADDRESS_HTML = "#regaddress";
+const REG_USER_HTML = "#reguser";
+const REG_PASS_HTML = "#regpass";
+
+function fh_register() {
+    if (checkUsernameValid() && checkPasswordValid()) {
+        var sending = {
+            DOB: $(REG_DOB_HTML).val(),
+            userID: $(REG_USER_HTML).val(),
+            Height: $(REG_HEIGHT_HTML).val(),
+            Weight: $(REG_WEIGHT_HTML).val(),
+            Password: $(REG_PASS_HTML).val(),
+            EmailAddress: $(REG_EMAIL_HTML).val(),
+            Address: $(REG_ADDRESS_HTML).val(),
+            CCNum: "1",
+            Name: $(REG_NAME_HTML).val(),
+            Type: "5",
+            transID: "12",
+            LoginID: "55", //$(REG_USER_HTML).val(),
+            Balance: "1"
+
+        };
+        console.log(sending);
+        $.getJSON(
+            REGISTER_PAGE,
+            sending,
+            function (data) {
+                handleRegister(data);
+            });
+    }
+}
+
+function injectUserInformation(info) {
+    $(DOB_HTML).value(info.DOB);
+    $(ADDRESS_HTML).value(info.Address);
+}
 
 function updateUserInformation() {
     var sending = {

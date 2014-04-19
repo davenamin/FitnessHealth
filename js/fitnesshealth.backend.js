@@ -2,24 +2,23 @@
 /*jshint esnext:true */
 /*global $:false */
 
+// ip or website!
+const WEB_ADDRESS = 'http://192.168.1.103/';
 // php pages
-const LOGIN_PAGE = 'http://192.168.1.103/login.php';
-const REGISTER_PAGE = 'http://192.168.1.103/register.php';
-const GET_WORKOUT_PAGE = 'http://192.168.1.103/get_workouts.php';
-const CREATE_WORKOUT_PAGE = 'http://192.168.1.103/create_workout.php';
-const UPDATE_USER_PAGE = 'http://192.168.1.103/update_user.php';
-const GET_USERS_PAGE = 'http://192.168.1.103/get_users.php';
-const ADD_TRAINER_PAGE = 'http://192.168.1.103/add_trainer.php';
-const GET_VALIDATABLE_WORKOUTS_PAGE = 'http://192.168.1.103/get_validatable_workouts.php';
+const LOGIN_PAGE = WEB_ADDRESS + 'redirect.php'; //'login.php';
+const REGISTER_PAGE = WEB_ADDRESS + 'register.php';
+const GET_WORKOUT_PAGE = WEB_ADDRESS + 'get_workouts.php';
+const CREATE_WORKOUT_PAGE = WEB_ADDRESS + 'create_workout.php';
+const UPDATE_USER_PAGE = WEB_ADDRESS + 'update_user.php';
+const GET_USERS_PAGE = WEB_ADDRESS + 'get_users.php';
+const ADD_TRAINER_PAGE = WEB_ADDRESS + 'add_trainer.php';
+const GET_VALIDATABLE_WORKOUTS_PAGE = WEB_ADDRESS + 'get_validatable_workouts.php';
 
 
 
 // global constants
-const USERNAME = "username";
 const USERNAME_HTML = "#username"; // TODO
-const PASSWORD = "password";
 const PASSWORD_HTML = "#password"; // TODO
-const SESSION = "sessionid";
 var sessionid;
 
 // login and register constants
@@ -27,10 +26,11 @@ var sessionid;
 function login() {
     if (checkUsernameValid() && checkPasswordValid()) {
         var sending = {
-            USERNAME: $(USERNAME_HTML).get(),
-            PASSWORD: $(PASSWORD_HTML).get()
+            username: $(USERNAME_HTML).val(),
+            password: $(PASSWORD_HTML).val()
         };
-
+        console.log(LOGIN_PAGE);
+        console.log(sending);
         $.getJSON(
             LOGIN_PAGE,
             sending,
@@ -58,12 +58,25 @@ function register() {
 }
 
 function handleLogin(response) {
-    sessionid = response;
+    if (response == "Invalid_Data") {
+        alert("BAD REQUEST");
+    } else if (response == "No_User_Data") {
+        alert("NO USER");
+    } else {
+
+        sessionid = response;
+        alert(response.Address);
+    }
+    console.log(response);
 }
 
-function checkUsernameValid() {}
+function checkUsernameValid() {
+    return true;
+}
 
-function checkPasswordValid() {}
+function checkPasswordValid() {
+    return true;
+}
 
 // get workouts constants
 const CURRENTDATE = "currentdate";

@@ -11,25 +11,25 @@
 
 <script type="text/javascript" language="javascript">
     // This event handler is fired once the intel libraries are ready
-                                                                            function onDeviceReady() {
-                                                                                //hide splash screen now that our app is ready to run
-                                                                                intel.xdk.device.hideSplashScreen();
-                                                                                setTimeout(function () {
-                                                                                    $.ui.launch();
-                                                                                }, 50);
-                                                                            }
-                                                                            //initial event handler to detect when intel is ready to roll
-                                                                            document.addEventListener("intel.xdk.device.ready", onDeviceReady, false);
+        function onDeviceReady() {
+            //hide splash screen now that our app is ready to run
+            intel.xdk.device.hideSplashScreen();
+            setTimeout(function() {
+                $.ui.launch();
+            }, 50);
+        }
+         //initial event handler to detect when intel is ready to roll
+        document.addEventListener("intel.xdk.device.ready", onDeviceReady, false);
 </script>
 <script src="js/appframework.ui.min.js"></script>
 <script>
     $.ui.autoLaunch = false;
-                                                                            $.ui.useOSThemes = true; //Change this to false to force a device theme
-                                                                            $.ui.blockPageScroll();
-                                                                            $(document).ready(function () {
-                                                                                if ($.ui.useOSThemes && !$.os.ios && $("#afui").get(0).className !== "ios")
-                                                                                    $("#afui").removeClass("ios");
-                                                                            });
+        $.ui.useOSThemes = true; //Change this to false to force a device theme
+        $.ui.blockPageScroll();
+        $(document).ready(function() {
+            if ($.ui.useOSThemes && !$.os.ios && $("#afui").get(0).className !== "ios")
+                $("#afui").removeClass("ios");
+        });
 </script>
 <link href="css/icons.css" rel="stylesheet" type="text/css">
 <link href="css/af.ui.css" rel="stylesheet" type="text/css">
@@ -90,8 +90,8 @@
 
 
         <div class="panel" title="Register User" data-nav="nav_0" id="register_user" data-appbuilder-object="page"
-        style="" data-header="header_0">
-            <div class="container" style="width: 100%;" data-appbuilder-object="container">
+        style="" data-header="header_0" data-footer="footer_2">
+            <div class="container" style="width: 100%; position: relative;" data-appbuilder-object="container">
                 <div class="text_item" data-appbuilder-object="text">
                     <h3>
                         <center>Register New User</center>
@@ -111,6 +111,10 @@
                     <label for="reguser">Username</label>
                     <input type="text" style="float:left;" id="reguser">
                 </div>
+                <div class="input_element form_element" style="width: 90%;" data-appbuilder-object="input">
+                    <label for="regheight">Height</label>
+                    <input type="text" id="regheight">
+                </div>
                 <div class="input_element form_element" style="width: 90%; overflow: hidden; "
                 data-appbuilder-object="input">
                     <label for="regpass">Password</label>
@@ -129,17 +133,15 @@
                     <input type="date" id="regdob">
                 </div>
                 <div class="input_element form_element" style="width: 90%;" data-appbuilder-object="input">
-                    <label for="regemail">Email</label>
-                    <input type="email" style="float:left;" id="regemail" placeholder="Email Address">
-                </div>
-                <div class="input_element form_element" style="width: 90%;" data-appbuilder-object="input">
-                    <label for="regheight">Height</label>
-                    <input type="text" id="regheight">
-                </div>
-                <div class="input_element form_element" style="width: 90%; " data-appbuilder-object="input">
                     <label for="regweight">Weight (lbs)</label>
                     <input type="number" style="float:left;" id="regweight">
                 </div>
+                <div class="input_element form_element" style="width: 90%;" data-appbuilder-object="input">
+                    <label for="regemail">Email</label>
+                    <input type="email" style="float:left;" id="regemail" placeholder="Email Address">
+                </div>
+
+
                 <div class="input_element form_element" style="width: 90%; overflow: hidden;" data-appbuilder-object="input">
                     <label for="regaddress">Address</label>
                     <input type="text" style="float:left;" id="regaddress">
@@ -159,7 +161,7 @@
 
 
         <div class="panel" title="User Information" data-nav="nav_0" id="User_info" data-appbuilder-object="page"
-        style="" data-header="header_0">
+        style="" data-header="header_0" data-footer="footer_3">
             <div class="container" style="width: 100%;" data-appbuilder-object="container">
                 <div class="text_item" data-appbuilder-object="text">
                     <h3>
@@ -174,7 +176,9 @@
                 data-appbuilder-object="select">
                     <label for="type">User Type</label>
                     <select id="type">
-                        <option value="User">User</option>
+
+                        <option value="User" selected="">User</option>
+                        <option value="Trainer">Trainer</option>
                     </select>
                 </div>
                 <div class="select_element form_element" style="width: 90%; " data-appbuilder-object="select">
@@ -184,6 +188,10 @@
                 <div class="input_element form_element" style="width: 90%; overflow: hidden;" data-appbuilder-object="input">
                     <label for="password">Password</label>
                     <input type="password" style="float:left;" id="change_password" placeholder="Password">
+                </div>
+                <div class="input_element form_element" style="width: 90%;" data-appbuilder-object="input">
+                    <label for="height">Height</label>
+                    <input type="text" id="height">
                 </div>
                 <div class="select_element form_element" style="width: 90%; overflow: hidden;"
                 data-appbuilder-object="select">
@@ -202,10 +210,7 @@
                     <label for="email">Email</label>
                     <input type="email" style="float:left;" id="email" placeholder="Email Address">
                 </div>
-                <div class="input_element form_element" style="width: 90%;" data-appbuilder-object="input">
-                    <label for="height">Height</label>
-                    <input type="text" id="height">
-                </div>
+
                 <div class="input_element form_element" style="width: 90%; " data-appbuilder-object="input">
                     <label for="weight">Weight (lbs)</label>
                     <input type="number" style="float:left;" id="weight">
@@ -227,47 +232,49 @@
         </div>
 
         <div class="panel" title="Work Out" data-nav="nav_0" id="workout" data-appbuilder-object="page"
-        style="">
+        style="" data-footer="footer_4">
             <div class="text_item" data-appbuilder-object="text" style=" ">Enter Work out Details</div>
-            <div class="select_element form_element" style="width:100%;overflow:hidden " data-appbuilder-object="select">
-                <label for="date ">Select date</label>
-                <select id="date ">
-                    <option value="date " selected=" ">select date</option>
-                </select>
-            </div>
+
             <div class="input_element form_element" style="width: 100%; overflow: hidden; "
             data-appbuilder-object="input">
-                <label for="start time ">Start Time</label>
-                <input type="text" style="float:left;" id="start time" placeholder="Enter Start time">
+                <label for="startDate">Start Date</label>
+                <input type="date" style="float:left;" id="startDate" placeholder="Enter Start Date">
             </div>
-            <div class="input_element form_element" style="width:100%;overflow:hidden " data-appbuilder-object="input">
-                <label for="endTime ">End Time</label>
-                <input type="text" style="float:left;" id="endTime" placeholder="Enter end time">
-            </div>
-            <div class="select_element form_element" style="width:100%;overflow:hidden" data-appbuilder-object="select">
-                <label for="repetations">Repetations</label>
-                <select id="repetations">
-                    <option value="Select Box" selected=" ">enter repetations</option>
-                </select>
+            <div class="input_element form_element" style="" data-appbuilder-object="input">
+                <label for="endDate">End Date</label>
+                <input type="date" style="float:left;" id="endDate" placeholder="Enter End Date">
             </div>
             <div class="select_element form_element" style="width:100%;overflow:hidden" data-appbuilder-object="select">
-                <label for="worktime">work time</label>
-                <select id="worktime">
-                    <option value="Select Box" selected=" ">Select Box</option>
+                <label for="Metric">Metric</label>
+                <select id="Metric" multiple="multiple">
+
+
+
+
+
+                    <option value="Distance">Distance</option>
+                    <option value="Repetition">Repetition</option>
+                    <option value="Time">Time</option>
                 </select>
             </div>
-            <div class="select_element form_element" style="width:100%;overflow:hidden" data-appbuilder-object="select">
-                <label for="distance">distance</label>
-                <select id="distance">
-                    <option value="Select Box" selected=" ">Select Box</option>
-                </select>
+            <div class="input_element form_element" style="width: 100%; overflow: hidden;"
+            data-appbuilder-object="input">
+                <label for="Frequency">Frequency</label>
+                <input type="number" style="float:left;" id="Frequency" placeholder="Number Per Week">
             </div>
+            <div class="textarea_element form_element" style="width: 100%; overflow: hidden;"
+            data-appbuilder-object="textarea">
+                <label for="Description">Description</label>
+                <textarea id="Description"></textarea>
+            </div>
+
+
             <a class="button" href="# " style="background-color: rgb(28, 184, 65); position: relative; left: 130px;"
             data-appbuilder-object="button" data-transition="slide" id="submit">submit</a>
         </div>
 
         <div class="panel" title="About" data-nav="nav_0" id="about" data-appbuilder-object="page"
-        style="">
+        style="" data-footer="footer_5">
             <div id="testharness ">
                 <a class="button" href="#" style=" " data-appbuilder-object="button" onclick="fh_login()">TEST QUERY</a>
                 <div id="removeme ">REMOVE ME</div>
@@ -339,10 +346,10 @@
         </div>
     </div>
     <div id="navbar" class="footer">
-        <a href="#workout" class="icon calendar">Workouts</a>
-        <a href="#User_info" class="icon check">User INFO</a>
-        <a href="#about" class="icon info">About</a>
-        <a href="#main" class="icon database">Login</a>
+        <footer>
+            <a href="#main" class="icon home" style="">Home</a>
+            <a href="#about" class="icon user" style="">About</a>
+        </footer>
     </div>
     <header id="header_0" data-appbuilder-object="header">
         <h1 class="apptitle">Fitness Health</h1>
@@ -352,6 +359,27 @@
         <a id="backButton" href="#" class="button">Back</a>
         <h1 class="">Custom Title</h1>
     </header>
+    <footer id="footer_1" data-appbuilder-object="footer">
+        <a href="#main" class="icon home">Home</a>
+    </footer>
+    <footer id="footer_2" data-appbuilder-object="footer">
+        <a href="#main" class="icon home">Home</a>
+        <a href="#about" class="icon user">About</a>
+    </footer>
+    <nav id="nav_0" data-appbuilder-object="nav">
+        <h1>Side Nav</h1>
+    </nav>
+    <footer id="footer_3" data-appbuilder-object="footer">
+        <a href="#main" class="icon home">Home</a>
+        <a href="#about" class="icon user">About</a>
+    </footer>
+    <footer id="footer_4" data-appbuilder-object="footer">
+        <a href="#User_info" class="icon left">User Information</a>
+    </footer>
+    <footer id="footer_5" data-appbuilder-object="footer">
+        <a href="#main" class="icon home">Home</a>
+        <a href="#register_user" class="icon right">User Information</a>
+    </footer>
 </div>
 
 

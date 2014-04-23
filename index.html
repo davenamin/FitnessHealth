@@ -12,25 +12,25 @@
 
     <script type="text/javascript" language="javascript">
         // This event handler is fired once the intel libraries are ready
-                function onDeviceReady() {
-                    //hide splash screen now that our app is ready to run
-                    intel.xdk.device.hideSplashScreen();
-                    setTimeout(function() {
-                        $.ui.launch();
-                    }, 50);
-                }
-                 //initial event handler to detect when intel is ready to roll
-                document.addEventListener("intel.xdk.device.ready", onDeviceReady, false);
+                    function onDeviceReady() {
+                        //hide splash screen now that our app is ready to run
+                        intel.xdk.device.hideSplashScreen();
+                        setTimeout(function() {
+                            $.ui.launch();
+                        }, 50);
+                    }
+                     //initial event handler to detect when intel is ready to roll
+                    document.addEventListener("intel.xdk.device.ready", onDeviceReady, false);
     </script>
     <script src="js/appframework.ui.min.js"></script>
     <script>
         $.ui.autoLaunch = false;
-                $.ui.useOSThemes = true; //Change this to false to force a device theme
-                $.ui.blockPageScroll();
-                $(document).ready(function() {
-                    if ($.ui.useOSThemes && !$.os.ios && $("#afui").get(0).className !== "ios")
-                        $("#afui").removeClass("ios");
-                });
+                    $.ui.useOSThemes = true; //Change this to false to force a device theme
+                    $.ui.blockPageScroll();
+                    $(document).ready(function() {
+                        if ($.ui.useOSThemes && !$.os.ios && $("#afui").get(0).className !== "ios")
+                            $("#afui").removeClass("ios");
+                    });
     </script>
     <link href="css/icons.css" rel="stylesheet" type="text/css">
     <link href="css/af.ui.css" rel="stylesheet" type="text/css">
@@ -242,11 +242,6 @@
         </div>
 
         <div class="panel" title="About" data-nav="nav_0" id="about" data-appbuilder-object="page" style="" data-footer="footer_5">
-            <div id="testharness ">
-                <a class="button" href="#" style=" " data-appbuilder-object="button" onclick="fh_login()">TEST QUERY</a>
-                <div id="removeme ">REMOVE ME</div>
-                <ol id="testtext" class="list inset "></ol>
-            </div>
             <div class="text_item" data-appbuilder-object="text" style=" ">
                 <h1>Fitness Health is an application designed and created by:</h1>
                 <br>
@@ -317,13 +312,17 @@
 
                 </div>
                 <div class="select_element form_element" style="width:100%;overflow:hidden" data-appbuilder-object="select">
-                    <label for="Description">Workouts</label>
-                    <select id="Description"></select>
+                    <label for="user_workouts">Workouts</label>
+                    <div id="user_workouts">
+                        <ol id="workout_list" class="list inset "></ol>
+                    </div>
                 </div>
 
                 <div class="textarea_element form_element" style="width: 100%; overflow: hidden;" data-appbuilder-object="textarea">
-                    <label for="Trainer">Trainer's</label>
-                    <textarea id="Trainer"></textarea>
+                    <label for="user_trainers">Trainers</label>
+                    <div id="user_trainers">
+                        <ol id="trainers_list" class="list inset "></ol>
+                    </div>
                 </div>
 
                 <div class="input_element form_element" style="width:100%;overflow:hidden" data-appbuilder-object="input">

@@ -70,9 +70,9 @@ function handleRegister(response) {
 
     if (response == "User_Exists") {
         $.ui.popup("Exists!");
-    } else if (response == "USER_ADDED") {
-        $.ui.popup("Added!");
-        window.location = "#page_5";
+    } else if (response == "User_Added") {
+        $.ui.popup("User Added! Please log in");
+        $.ui.loadContent("#main");
     } else {
         $.ui.popup(response);
     }
@@ -216,6 +216,18 @@ function injectUserInformation(info) {
     $(DOB_HTML).val(info.DOB);
     $(ADDRESS_HTML).val(info.Address);
     $(BALANCE_HTML).val(info.Balance);
+}
+
+function injectUserWorkouts(data) {
+    $.each(data, function (i, item) {
+        $('#workout_list').append('<li>' + item + '</li>');
+    });
+}
+
+function injectUserTrainers(data) {
+    $.each(data, function (i, item) {
+        $('#trainers_list').append('<li>' + item + '</li>');
+    });
 }
 
 function updateUserInformation() {

@@ -40,7 +40,10 @@ function login() {
     }
 }
 
-
+function testlogin() {
+    console.log("login!!!");
+    location.href = "#page_5";
+}
 
 
 function handleLogin(response) {
@@ -48,14 +51,16 @@ function handleLogin(response) {
 
 
     if (response == "Invalid_Data") {
-        alert("BAD REQUEST");
+        $.ui.popup("BAD REQUEST");
     } else if (response == "No_User_Data") {
-        alert("NO USER");
+        $.ui.popup("NO USER");
     } else {
 
         sessionid = response;
-        alert(response.Address);
+        $.ui.popup("Login successful!");
         injectUserInformation(sessionid);
+        $.ui.loadContent("#page_5");
+        //window.location.href = "#page_5";
     }
 }
 
@@ -64,11 +69,12 @@ function handleRegister(response) {
 
 
     if (response == "User_Exists") {
-        alert("Exists!");
+        $.ui.popup("Exists!");
     } else if (response == "USER_ADDED") {
-        alert("Added!");
+        $.ui.popup("Added!");
+        window.location = "#page_5";
     } else {
-        alert(response);
+        $.ui.popup(response);
     }
 }
 
@@ -159,8 +165,9 @@ const WEIGHT_HTML = "#weight";
 const EMAIL_HTML = "#email";
 const NAME_HTML = "#name";
 const ADDRESS_HTML = "#address";
-const REG_USER_HTML = "#reguser";
-const REG_PASS_HTML = "#regpass";
+const BALANCE_HTML = "#balance";
+const USER_HTML = "#LoginID";
+const PASS_HTML = "#change_password";
 
 const REG_DOB_HTML = "#regdob";
 const REG_HEIGHT_HTML = "#regheight";
@@ -200,21 +207,28 @@ function fh_register() {
 }
 
 function injectUserInformation(info) {
-    $(DOB_HTML).value(info.DOB);
-    $(ADDRESS_HTML).value(info.Address);
+    $(USER_HTML).val(info.userID);
+    $(PASS_HTML).val(info.Password);
+    $(HEIGHT_HTML).val(info.Height);
+    $(WEIGHT_HTML).val(info.Weight);
+    $(EMAIL_HTML).val(info.EmailAddress);
+    $(NAME_HTML).val(info.Name);
+    $(DOB_HTML).val(info.DOB);
+    $(ADDRESS_HTML).val(info.Address);
+    $(BALANCE_HTML).val(info.Balance);
 }
 
 function updateUserInformation() {
     var sending = {
-        USERNAME: $(USERNAME_HTML).get(),
-        PASSWORD: $(PASSWORD_HTML).get(),
+        USERNAME: $(USERNAME_HTML).val(),
+        PASSWORD: $(PASSWORD_HTML).val(),
         SESSION: sessionid,
-        DOB: $(DOB_HTML).get(),
-        HEIGHT: $(HEIGHT_HTML).get(),
-        WEIGHT: $(WEIGHT_HTML).get(),
-        EMAIL: $(EMAIL_HTML).get(),
-        NAME: $(NAME_HTML).get(),
-        ADDRESS: $(ADDRESS_HTML).get()
+        DOB: $(DOB_HTML).val(),
+        HEIGHT: $(HEIGHT_HTML).val(),
+        WEIGHT: $(WEIGHT_HTML).val(),
+        EMAIL: $(EMAIL_HTML).val(),
+        NAME: $(NAME_HTML).val(),
+        ADDRESS: $(ADDRESS_HTML).val()
     };
 
     $.getJSON(

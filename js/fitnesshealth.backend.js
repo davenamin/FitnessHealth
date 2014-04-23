@@ -8,7 +8,7 @@ const WEB_ADDRESS = 'http://192.168.1.103/';
 const LOGIN_PAGE = WEB_ADDRESS + 'redirect.php'; //'login.php';
 const REGISTER_PAGE = WEB_ADDRESS + 'adduser.php';
 const GET_WORKOUT_PAGE = WEB_ADDRESS + 'get_workouts.php';
-const CREATE_WORKOUT_PAGE = WEB_ADDRESS + 'create_workout.php';
+const CREATE_WORKOUT_PAGE = WEB_ADDRESS + 'writeWorkout.php';
 const UPDATE_USER_PAGE = WEB_ADDRESS + 'update_user.php';
 const GET_USERS_PAGE = WEB_ADDRESS + 'get_users.php';
 const ADD_TRAINER_PAGE = WEB_ADDRESS + 'add_trainer.php';
@@ -115,32 +115,26 @@ function updateWorkoutsHTML(updatez) {
     // TODO   
 }
 // workout submission constants
-const STARTDATE = "start";
-const STARTDATE_HTML = "#start";
-const ENDDATE = "end";
-const ENDDATE_HTML = "#end";
-const FREQUENCY = "frequency";
-const FREQUENCY_HTML = "#frequency";
-const METRIC = "metric";
-const METRIC_HTML = "#metric";
-const QUANTITY = "quantity";
-const QUANTITY_HTML = "#quantity";
-const DESCRIPTION = "description";
-const DESCRIPTION_HTML = "#description";
+const STARTDATE_HTML = "#startDate";
+const ENDDATE_HTML = "#endDate";
+const FREQUENCY_HTML = "#Frequency";
+const METRIC_HTML = "#Metric";
+//const QUANTITY_HTML = "#quantity";
+const DESCRIPTION_HTML = "#Description";
 
 function createWorkout() {
 
     if (checkWorkoutValid()) {
         var sending = {
-            USERNAME: $(USERNAME_HTML).get(),
-            PASSWORD: $(PASSWORD_HTML).get(),
-            SESSION: sessionid,
-            STARTDATE: $(STARTDATE_HTML).get(),
-            ENDDATE: $(ENDDATE_HTML).get(),
-            FREQUENCY: $(FREQUENCY_HTML).get(),
-            METRIC: $(METRIC_HTML).get(),
-            QUANTITY: $(QUANTITY_HTML).get(),
-            DESCRIPTION: $(DESCRIPTION_HTML).get()
+            userID: $(USERNAME_HTML).val(),
+            //PASSWORD: $(PASSWORD_HTML).val(),
+            //SESSION: sessionid,
+            StartDate: $(STARTDATE_HTML).val(),
+            EndDate: $(ENDDATE_HTML).val(),
+            Frequency: $(FREQUENCY_HTML).val(),
+            Metric: $(METRIC_HTML).val(),
+            //QUANTITY: $(QUANTITY_HTML).val(),
+            Description: $(DESCRIPTION_HTML).val()
         };
 
         $.getJSON(
@@ -154,9 +148,12 @@ function createWorkout() {
 
 function createWorkoutResponse(response) {
     //TODO
+    $.ui.popup(response);
 }
 
-function checkWorkoutValid() {}
+function checkWorkoutValid() {
+    return true;
+}
 
 // update user information constants
 const DOB_HTML = "#dob";
@@ -166,6 +163,7 @@ const EMAIL_HTML = "#email";
 const NAME_HTML = "#name";
 const ADDRESS_HTML = "#address";
 const BALANCE_HTML = "#balance";
+const BALANCE_USER_HTML = "#balance_user";
 const USER_HTML = "#LoginID";
 const PASS_HTML = "#change_password";
 
@@ -216,16 +214,26 @@ function injectUserInformation(info) {
     $(DOB_HTML).val(info.DOB);
     $(ADDRESS_HTML).val(info.Address);
     $(BALANCE_HTML).val(info.Balance);
+    $(BALANCE_USER_HTML).val(info.Balance);
+    injectUserWorkouts(info.Activity);
+    injectUserTrainers(info.user_Trainers);
 }
 
 function injectUserWorkouts(data) {
-    $.each(data, function (i, item) {
+    console.log(data);
+    tempdata = $.parseJSON(data);
+    $('#workout_list').text("");
+    $.each(tempdata, function (i, item) {
+        console.log(item);
         $('#workout_list').append('<li>' + item + '</li>');
     });
 }
 
 function injectUserTrainers(data) {
-    $.each(data, function (i, item) {
+    console.log(data);
+    tempdata = $.parseJSON(data);
+    $('#trainers_list').text("");
+    $.each(tempdata, function (i, item) {
         $('#trainers_list').append('<li>' + item + '</li>');
     });
 }

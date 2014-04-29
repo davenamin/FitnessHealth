@@ -5,10 +5,10 @@
 // ip or website!
 const WEB_ADDRESS = 'http://192.168.1.103/';
 // php pages
-const LOGIN_PAGE = WEB_ADDRESS + 'redirect.php'; //'login.php';
-const REGISTER_PAGE = WEB_ADDRESS + 'adduser.php';
-const GET_WORKOUT_PAGE = WEB_ADDRESS + 'get_workouts.php';
-const CREATE_WORKOUT_PAGE = WEB_ADDRESS + 'writeWorkout.php';
+const LOGIN_PAGE = WEB_ADDRESS + 'connectClient.php'; //'login.php';
+const REGISTER_PAGE = WEB_ADDRESS + 'createOrUpdate.php';
+const GET_WORKOUT_PAGE = WEB_ADDRESS + 'getWorkoutsForUser.php';
+const CREATE_WORKOUT_PAGE = WEB_ADDRESS + 'addWorkout.php';
 const UPDATE_USER_PAGE = WEB_ADDRESS + 'update_user.php';
 const GET_USERS_PAGE = WEB_ADDRESS + 'get_users.php';
 const ADD_TRAINER_PAGE = WEB_ADDRESS + 'add_trainer.php';

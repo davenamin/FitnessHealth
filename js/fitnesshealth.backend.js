@@ -31,18 +31,15 @@ function login() {
         };
         console.log(LOGIN_PAGE);
         console.log(sending);
+        $.ui.showMask("Loading...");
         $.getJSON(
             LOGIN_PAGE,
             sending,
             function (data) {
+                $.ui.hideMask();
                 handleLogin(data);
             });
     }
-}
-
-function testlogin() {
-    console.log("login!!!");
-    location.href = "#page_5";
 }
 
 
@@ -58,9 +55,12 @@ function handleLogin(response) {
 
         sessionid = response;
         $.ui.popup("Login successful!");
+
+        if (sessionid.BalanceFlag == "yes") {
+            $.ui.popup("You have missed one or more workouts, and your balance has been deducted accordingly!");
+        }
         injectUserInformation(sessionid);
         $.ui.loadContent("#page_5");
-        //window.location.href = "#page_5";
     }
 }
 
@@ -205,16 +205,16 @@ function fh_register() {
 }
 
 function injectUserInformation(info) {
-    $(USER_HTML).val(info.userID);
-    $(PASS_HTML).val(info.Password);
-    $(HEIGHT_HTML).val(info.Height);
-    $(WEIGHT_HTML).val(info.Weight);
-    $(EMAIL_HTML).val(info.EmailAddress);
-    $(NAME_HTML).val(info.Name);
-    $(DOB_HTML).val(info.DOB);
-    $(ADDRESS_HTML).val(info.Address);
-    $(BALANCE_HTML).val(info.Balance);
-    $(BALANCE_USER_HTML).val(info.Balance);
+    $.ui.updatePanel(USER_HTML, info.userID); //$(USER_HTML).val(info.userID);
+    $.ui.updatePanel(PASS_HTML, info.Password); //$(PASS_HTML).val(info.Password);
+    $.ui.updatePanel(HEIGHT_HTML, info.Height); //$(HEIGHT_HTML).val(info.Height);
+    $.ui.updatePanel(WEIGHT_HTML, info.Weight); //$(WEIGHT_HTML).val(info.Weight);
+    $.ui.updatePanel(EMAIL_HTML, info.EmailAddress); //$(EMAIL_HTML).val(info.EmailAddress);
+    $.ui.updatePanel(NAME_HTML, info.Name); //$(NAME_HTML).val(info.Name);
+    $.ui.updatePanel(DOB_HTML, info.DOB); //$(DOB_HTML).val(info.DOB);
+    $.ui.updatePanel(ADDRESS_HTML, info.Address); //$(ADDRESS_HTML).val(info.Address);
+    $.ui.updatePanel(BALANCE_HTML, info.Balance); //$(BALANCE_HTML).val(info.Balance);
+    $.ui.updatePanel(BALANCE_USER_HTML, info.Balance); //$(BALANCE_USER_HTML).val(info.Balance);
     injectUserWorkouts(info.Activity);
     injectUserTrainers(info.user_Trainers);
 }
